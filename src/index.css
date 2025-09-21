@@ -2,95 +2,180 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Apple-like Dark Theme Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Apple-like Dark Theme Colors */
+    --background: 217 19% 6%; /* #0b0f14 */
+    --surface: 216 24% 9%; /* #0f1720 */
+    --surface-elevated: 216 20% 12%; /* #1a1f2b */
+    
+    --foreground: 215 25% 92%; /* #e6eef8 */
+    --foreground-muted: 215 15% 66%; /* #9aa6b2 */
+    --foreground-dimmed: 215 10% 45%; /* #6b7280 */
+    
+    --accent-primary: 213 93% 70%; /* #6ea8fe */
+    --accent-primary-hover: 213 93% 75%;
+    --accent-secondary: 270 91% 65%; /* #a855f7 */
+    
+    --border: 216 12% 20%; /* #2d3748 */
+    --border-muted: 216 8% 16%; /* #232832 */
+    
+    --shadow-subtle: 217 19% 4% / 0.1;
+    --shadow-medium: 217 19% 4% / 0.2;
+    --shadow-strong: 217 19% 4% / 0.4;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
+    --gradient-surface: linear-gradient(135deg, hsl(var(--surface)), hsl(var(--surface-elevated)));
+    
+    --transition-smooth: all 420ms cubic-bezier(0.22, 0.9, 0.34, 1);
+    --transition-quick: all 200ms cubic-bezier(0.22, 0.9, 0.34, 1);
+    
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Legacy shadcn compatibility */
+    --card: var(--surface);
+    --card-foreground: var(--foreground);
+    --popover: var(--surface-elevated);
+    --popover-foreground: var(--foreground);
+    --primary: var(--accent-primary);
+    --primary-foreground: var(--background);
+    --secondary: var(--surface-elevated);
+    --secondary-foreground: var(--foreground);
+    --muted: var(--surface);
+    --muted-foreground: var(--foreground-muted);
+    --accent: var(--surface-elevated);
+    --accent-foreground: var(--foreground);
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--foreground);
+    --border: var(--border);
+    --input: var(--border);
+    --ring: var(--accent-primary);
+    --radius: var(--radius-md);
+  }
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+/* Typography System */
+@layer base {
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  .text-display {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  .text-headline {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  .text-body-large {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    line-height: 1.6;
+  }
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  .text-body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  .text-caption {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+}
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+/* Animation System */
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 420ms cubic-bezier(0.22, 0.9, 0.34, 1) forwards;
+    opacity: 0;
+    transform: translateY(18px);
+  }
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+  .animate-fade-up-delayed {
+    animation: fadeUp 420ms cubic-bezier(0.22, 0.9, 0.34, 1) 80ms forwards;
+    opacity: 0;
+    transform: translateY(18px);
+  }
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+  .animate-fade-up-delayed-2 {
+    animation: fadeUp 420ms cubic-bezier(0.22, 0.9, 0.34, 1) 160ms forwards;
+    opacity: 0;
+    transform: translateY(18px);
+  }
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  .animate-fade-up-delayed-3 {
+    animation: fadeUp 420ms cubic-bezier(0.22, 0.9, 0.34, 1) 240ms forwards;
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hover-lift {
+    transition: var(--transition-quick);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 20px 40px -12px hsl(var(--shadow-strong));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-up,
+    .animate-fade-up-delayed,
+    .animate-fade-up-delayed-2,
+    .animate-fade-up-delayed-3 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    
+    .hover-lift:hover {
+      transform: none;
+    }
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .glass-card {
+    background: linear-gradient(135deg, 
+      hsl(var(--surface) / 0.8), 
+      hsl(var(--surface-elevated) / 0.6)
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius-lg);
+    box-shadow: 
+      0 4px 6px -1px hsl(var(--shadow-subtle)),
+      0 2px 4px -1px hsl(var(--shadow-medium));
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 

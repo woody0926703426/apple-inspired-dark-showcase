@@ -14,11 +14,25 @@ export default {
     },
     extend: {
       colors: {
+        // Apple-like theme colors
+        background: "hsl(var(--background))",
+        surface: "hsl(var(--surface))",
+        "surface-elevated": "hsl(var(--surface-elevated))",
+        
+        foreground: "hsl(var(--foreground))",
+        "foreground-muted": "hsl(var(--foreground-muted))",
+        "foreground-dimmed": "hsl(var(--foreground-dimmed))",
+        
+        "accent-primary": "hsl(var(--accent-primary))",
+        "accent-primary-hover": "hsl(var(--accent-primary-hover))",
+        "accent-secondary": "hsl(var(--accent-secondary))",
+        
         border: "hsl(var(--border))",
+        "border-muted": "hsl(var(--border-muted))",
+        
+        // Shadcn compatibility
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -46,16 +60,6 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
         },
       },
       borderRadius: {
